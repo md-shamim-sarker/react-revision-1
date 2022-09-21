@@ -3,17 +3,22 @@ import {useState} from 'react';
 import './Blog.css';
 
 const blogStyle = {
-    color: "black"
+    color: "blue"
 };
 
 const Blog = (props) => {
 
+    const {title, body} = props.blog;
+
+    // capitalize a word
+    const capitalize = ([first, ...rest]) => first.toUpperCase() + rest.join('').toLowerCase();
+
     // like button count
-    const [likeCount, setLikeCount] = useState(57);
+    const [likeCount, setLikeCount] = useState(body.length);
     const increaseLike = () => setLikeCount(likeCount + 1);
 
     // dislike button count
-    const [dislikeCount, setDislikeCount] = useState(10);
+    const [dislikeCount, setDislikeCount] = useState(title.length);
     const increaseDislike = () => setDislikeCount(dislikeCount + 1);
 
     // mobile charge count
@@ -29,14 +34,14 @@ const Blog = (props) => {
     return (
         <div className='blog'>
             <header>
-                <h2 style={blogStyle}>{props.title}</h2>
+                <h2 style={blogStyle}>{capitalize(title)}</h2>
                 <p>
-                    <strong>Author:</strong> Shamim Sarker <br />
+                    <strong>Author:</strong> {capitalize(title.slice(0, 10))} <br />
                     <strong>Date:</strong> 21/09/2022
                 </p>
             </header>
             <main>
-                <article style={{color: "blue"}}>{props.body}</article>
+                <article style={{color: "gray"}}>{body}</article>
             </main>
             <footer>
                 <div className='btn'>
@@ -45,9 +50,9 @@ const Blog = (props) => {
                     <button onClick={batterDrain}>Mobile</button>
                 </div>
                 <div className='counting'>
-                    <span>Liked: {likeCount}</span>
-                    <span>Disliked: {dislikeCount}</span>
-                    <span>Battery: {charge}%</span>
+                    <span><i class="bi bi-hand-thumbs-up"></i> {likeCount}</span>
+                    <span><i class="bi bi-hand-thumbs-down"></i> {dislikeCount}</span>
+                    <span><i class="bi bi-battery-full"></i> {charge}%</span>
                 </div>
             </footer>
         </div>
