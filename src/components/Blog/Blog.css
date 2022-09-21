@@ -1,0 +1,26 @@
+.blog {
+    width: 50%;
+    margin: 2rem auto;
+    border: 1px solid gray;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.blog article {
+    margin-bottom: 2rem;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn button {
+    margin-right: 1rem;
+    width: 4rem;
+}
+
+.counting span {
+    margin-left: 1rem;
+}
